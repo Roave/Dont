@@ -64,7 +64,7 @@ final class NonDeSerializableObjectTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(TypeError::class);
 
-        NonDeSerializableObject::fromAttemptedSerialization($nonObject);
+        NonDeSerializableObject::fromAttemptedDeSerialization($nonObject);
     }
 
     /**
