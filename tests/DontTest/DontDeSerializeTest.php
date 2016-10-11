@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace DontTest;
 
-use Dont\DeSerialize;
+use Dont\DontDeSerialize;
 use Dont\Exception\NonDeSerializableObject;
 
 /**
- * @covers \Dont\DeSerialize
+ * @covers \Dont\DontDeSerialize
  */
-final class DeSerializeTest extends \PHPUnit_Framework_TestCase
+final class DontDeSerializeTest extends \PHPUnit_Framework_TestCase
 {
     public function testWillThrowOnSerializationAttempt()
     {
@@ -21,6 +21,6 @@ final class DeSerializeTest extends \PHPUnit_Framework_TestCase
 
     public function testSerializePreventionIsFinal()
     {
-        self::assertTrue((new \ReflectionMethod(DeSerialize::class, '__wakeup'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(DontDeSerialize::class, '__wakeup'))->isFinal());
     }
 }

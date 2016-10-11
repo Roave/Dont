@@ -8,5 +8,5 @@ use Dont;
 
 final class NonDeSerializable
 {
-    use Dont\DeSerialize;
+    use Dont\DontDeSerialize;
 }

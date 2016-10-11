@@ -7,7 +7,7 @@ namespace Dont;
 use Dont\Exception\NonDeSerializableObject;
 use Dont\Exception\TypeError;
 
-trait DeSerialize
+trait DontDeSerialize
 {
     /**
      * @return void

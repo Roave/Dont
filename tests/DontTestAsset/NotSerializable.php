@@ -8,5 +8,5 @@ use Dont;
 
 final class NotSerializable
 {
-    use Dont\Serialize;
+    use Dont\DontSerialize;
 }
