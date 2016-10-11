@@ -22,12 +22,12 @@
         "phpunit/phpunit": "^5.6.1"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Dont\\": "src/Dont"
         }
     },
     "autoload-dev": {
-        "psr-0": {
+        "psr-4": {
             "DontTest\\": "tests/DontTest",
             "DontTestAsset\\": "tests/DontTestAsset"
         }
