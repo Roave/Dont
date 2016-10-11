@@ -15,7 +15,7 @@ trait Serialize
      * @throws NonSerializableObject
      * @throws TypeError
      */
-    public function __sleep()
+    final public function __sleep()
     {
         throw NonSerializableObject::fromAttemptedSerialization($this);
     }
