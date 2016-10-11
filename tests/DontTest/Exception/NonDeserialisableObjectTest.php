@@ -31,7 +31,7 @@ final class NonDeserialisableObjectTest extends \PHPUnit_Framework_TestCase
         $expected = 'The given object ' . get_class($object)
             . '#' . spl_object_hash($object) . ' is not designed to be deserialized, '
             . "yet deserialization was attempted using\n"
-            . " the `unserialize` funtion."
+            . " the `unserialize` function."
             . "\n\n"
             . 'This error is raised because the author of ' . get_class($object)
             . " didn't design it to be deserialized, nor can guarantee \n"

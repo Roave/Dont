@@ -10,7 +10,7 @@ class ShouldNotUnserializeObject extends LogicException implements ExceptionInte
 {
     private const ERROR_TEMPLATE = <<<'ERROR'
 The given object %s#%s is not designed to be deserialized, yet deserialization was attempted using
- the `unserialize` funtion.
+ the `unserialize` function.
 
 This error is raised because the author of %s didn't design it to be deserialized, nor can guarantee 
 that all its internal components are deserializable. 
