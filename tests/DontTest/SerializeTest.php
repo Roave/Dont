@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DontTest;
 
 use Dont\Exception\NonSerializableObject;
+use Dont\Serialize;
 use DontTestAsset\NotSerializable;
 
 /**
@@ -19,5 +20,10 @@ final class SerializeTest extends \PHPUnit_Framework_TestCase
         $this->expectException(NonSerializableObject::class);
 
         serialize($object);
+    }
+
+    public function testSerializePreventionIsFinal()
+    {
+        self::assertTrue((new \ReflectionMethod(Serialize::class, '__sleep'))->isFinal());
     }
 }
