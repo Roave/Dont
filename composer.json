@@ -1,5 +1,5 @@
 {
-    "name":        "roave/don-t",
+    "name":        "roave/dont",
     "description": "A small set of traits that can be used to prevent misuse of your objects",
     "type":        "library",
     "license":     "MIT",
