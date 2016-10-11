@@ -19,7 +19,6 @@
     stopOnFailure="false"
     processIsolation="false"
     backupGlobals="false"
-    columns="max"
 >
     <testsuite name="roave/don-t tests">
         <directory>./tests/DontTest</directory>
