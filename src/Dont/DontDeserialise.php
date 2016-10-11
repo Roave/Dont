@@ -10,12 +10,10 @@ use Dont\Exception\TypeError;
 trait DontDeserialise
 {
     /**
-     * @return void
-     *
      * @throws NonDeserialisableObject
      * @throws TypeError
      */
-    final public function __wakeup()
+    final public function __wakeup() : void
     {
         throw NonDeserialisableObject::fromAttemptedDeSerialisation($this);
     }

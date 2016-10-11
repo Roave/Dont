@@ -10,12 +10,10 @@ use Dont\Exception\TypeError;
 trait DontSerialise
 {
     /**
-     * @return void
-     *
      * @throws NonSerialisableObject
      * @throws TypeError
      */
-    final public function __sleep()
+    final public function __sleep() : void
     {
         throw NonSerialisableObject::fromAttemptedSerialisation($this);
     }
