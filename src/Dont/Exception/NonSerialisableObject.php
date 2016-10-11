@@ -8,6 +8,16 @@ use LogicException;
 
 class NonSerialisableObject extends LogicException implements ExceptionInterface
 {
+    private const ERROR_TEMPLATE = <<<'ERROR'
+The given object %s#%s is not designed to be serialised, yet serialisation was attempted.
+
+This error is raised because the author of %s didn't design it to be serialisable, nor can
+guarantee that it will function correctly after serialisation, nor can guarantee that all
+its internal components are serialisable.
+
+Please do not serialise %s instances.
+ERROR;
+
     /**
      * @param object $object
      *
@@ -21,20 +31,10 @@ class NonSerialisableObject extends LogicException implements ExceptionInterface
             throw TypeError::fromNonObject($object);
         }
 
-        $template = <<<'ERROR'
-The given object %s#%s is not designed to be serialised, yet serialisation was attempted.
-
-This error is raised because the author of %s didn't design it to be serialisable, nor can
-guarantee that it will function correctly after serialisation, nor can guarantee that all
-its internal components are serialisable.
-
-Please do not serialise %s instances.
-ERROR;
-
         $className = get_class($object);
 
         return new self(sprintf(
-            $template,
+            self::ERROR_TEMPLATE,
             $className,
             spl_object_hash($object),
             $className,
