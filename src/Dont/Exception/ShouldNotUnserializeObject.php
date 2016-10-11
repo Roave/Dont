@@ -6,14 +6,14 @@ namespace Dont\Exception;
 
 use LogicException;
 
-class NonDeserialisableObject extends LogicException implements ExceptionInterface
+class ShouldNotUnserializeObject extends LogicException implements ExceptionInterface
 {
     private const ERROR_TEMPLATE = <<<'ERROR'
-The given object %s#%s is not designed to be deserialised, yet deserialisation was attempted.
+The given object %s#%s is not designed to be deserialized, yet deserialization was attempted using
+the `unserialize` funtion.
 
-This error is raised because the author of %s didn't design it to be deserialisable, nor can
-guarantee that it will function correctly after deserialisation, nor can guarantee that all
-its internal components are deserialisable.
+This error is raised because the author of %s didn't design it to be deserialized, nor can guarantee 
+that all its internal components are deserializable. 
 
 Please do not use unserialize() to produce %s instances.
 ERROR;

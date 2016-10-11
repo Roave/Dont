@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DontTest\Exception;
 
 use Dont\Exception\ExceptionInterface;
-use Dont\Exception\NonDeserialisableObject;
+use Dont\Exception\ShouldNotUnserializeObject;
 use Dont\Exception\TypeError;
 use LogicException;
 use stdClass;
@@ -22,9 +22,9 @@ final class NonDeserialisableObjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testFromAttemptedDeSerialisation($object) : void
     {
-        $exception = NonDeserialisableObject::fromAttemptedDeSerialisation($object);
+        $exception = ShouldNotUnserializeObject::fromAttemptedDeSerialisation($object);
 
-        self::assertInstanceOf(NonDeserialisableObject::class, $exception);
+        self::assertInstanceOf(ShouldNotUnserializeObject::class, $exception);
         self::assertInstanceOf(LogicException::class, $exception);
         self::assertInstanceOf(ExceptionInterface::class, $exception);
 
@@ -60,7 +60,7 @@ final class NonDeserialisableObjectTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(TypeError::class);
 
-        NonDeserialisableObject::fromAttemptedDeSerialisation($nonObject);
+        ShouldNotUnserializeObject::fromAttemptedDeSerialisation($nonObject);
     }
 
     /**
