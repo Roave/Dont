@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DontTestAsset;
 
-use Dont;
+use Dont\DontDeSerialize;
 
 final class NonDeSerializable
 {
-    use Dont\DontDeSerialize;
+    use DontDeSerialize;
 }
