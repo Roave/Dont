@@ -9,7 +9,6 @@
     convertWarningsToExceptions="true"
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutCoversAnnotation="true"
     beStrictAboutResourceUsageDuringSmallTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
