@@ -42,6 +42,33 @@ final class NonSerializableObjectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider objectProvider
+     *
+     * @param object $object
+     *
+     * @return void
+     */
+    public function testFromAttemptedDeSerialization($object)
+    {
+        $exception = NonSerializableObject::fromAttemptedDeSerialization($object);
+
+        self::assertInstanceOf(NonSerializableObject::class, $exception);
+        self::assertInstanceOf(LogicException::class, $exception);
+        self::assertInstanceOf(ExceptionInterface::class, $exception);
+
+        $expected = 'The given object ' . get_class($object)
+            . '#' . spl_object_hash($object) . ' is not designed to be de-serialized, '
+            . "yet de-serialization was attempted.\n\n"
+            . 'This error is raised because the author of ' . get_class($object)
+            . " didn't design it to be de-serializable, nor can\n"
+            . "guarantee that it will function correctly after de-serialization, nor can guarantee that all\n"
+            . "its internal components are de-serializable.\n\n"
+            . 'Please do not use unserialize() to produce ' . get_class($object) . ' instances.';
+
+        self::assertSame($expected, $exception->getMessage());
+    }
+
+    /**
      * @return object[][]
      */
     public function objectProvider() : array
