@@ -14,7 +14,10 @@ final class ExceptionInterfaceTest extends \PHPUnit_Framework_TestCase
 {
     public function testIsThrowable()
     {
-        self::assertInstanceOf(Throwable::class, $this->createMock(ExceptionInterface::class));
+        self::assertSame(
+            [Throwable::class],
+            (new \ReflectionClass(ExceptionInterface::class))->getInterfaceNames()
+        );
     }
 
     public function testIsInterface()
