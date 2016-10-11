@@ -6,20 +6,20 @@ namespace Dont\Exception;
 
 use LogicException;
 
-class NonDeSerializableObject extends LogicException implements ExceptionInterface
+class NonDeserialisableObject extends LogicException implements ExceptionInterface
 {
-    public static function fromAttemptedDeSerialization($object) : self
+    public static function fromAttemptedDeSerialisation($object) : self
     {
         if (! is_object($object)) {
             throw TypeError::fromNonObject($object);
         }
 
         $template = <<<'ERROR'
-The given object %s#%s is not designed to be de-serialized, yet de-serialization was attempted.
+The given object %s#%s is not designed to be deserialised, yet deserialisation was attempted.
 
-This error is raised because the author of %s didn't design it to be de-serializable, nor can
-guarantee that it will function correctly after de-serialization, nor can guarantee that all
-its internal components are de-serializable.
+This error is raised because the author of %s didn't design it to be deserialisable, nor can
+guarantee that it will function correctly after deserialisation, nor can guarantee that all
+its internal components are deserialisable.
 
 Please do not use unserialize() to produce %s instances.
 ERROR;

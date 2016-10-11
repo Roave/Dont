@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace DontTest\Exception;
 
 use Dont\Exception\ExceptionInterface;
-use Dont\Exception\NonDeSerializableObject;
+use Dont\Exception\NonDeserialisableObject;
 use Dont\Exception\TypeError;
 use LogicException;
 use stdClass;
 
 /**
- * @covers \Dont\Exception\NonDeSerializableObject
+ * @covers \Dont\Exception\NonDeserialisableObject
  */
-final class NonDeSerializableObjectTest extends \PHPUnit_Framework_TestCase
+final class NonDeserialisableObjectTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider objectProvider
@@ -22,21 +22,21 @@ final class NonDeSerializableObjectTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testFromAttemptedDeSerialization($object)
+    public function testFromAttemptedDeSerialisation($object)
     {
-        $exception = NonDeSerializableObject::fromAttemptedDeSerialization($object);
+        $exception = NonDeserialisableObject::fromAttemptedDeSerialisation($object);
 
-        self::assertInstanceOf(NonDeSerializableObject::class, $exception);
+        self::assertInstanceOf(NonDeserialisableObject::class, $exception);
         self::assertInstanceOf(LogicException::class, $exception);
         self::assertInstanceOf(ExceptionInterface::class, $exception);
 
         $expected = 'The given object ' . get_class($object)
-            . '#' . spl_object_hash($object) . ' is not designed to be de-serialized, '
-            . "yet de-serialization was attempted.\n\n"
+            . '#' . spl_object_hash($object) . ' is not designed to be deserialised, '
+            . "yet deserialisation was attempted.\n\n"
             . 'This error is raised because the author of ' . get_class($object)
-            . " didn't design it to be de-serializable, nor can\n"
-            . "guarantee that it will function correctly after de-serialization, nor can guarantee that all\n"
-            . "its internal components are de-serializable.\n\n"
+            . " didn't design it to be deserialisable, nor can\n"
+            . "guarantee that it will function correctly after deserialisation, nor can guarantee that all\n"
+            . "its internal components are deserialisable.\n\n"
             . 'Please do not use unserialize() to produce ' . get_class($object) . ' instances.';
 
         self::assertSame($expected, $exception->getMessage());
@@ -64,7 +64,7 @@ final class NonDeSerializableObjectTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(TypeError::class);
 
-        NonDeSerializableObject::fromAttemptedDeSerialization($nonObject);
+        NonDeserialisableObject::fromAttemptedDeSerialisation($nonObject);
     }
 
     /**

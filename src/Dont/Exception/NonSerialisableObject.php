@@ -6,29 +6,29 @@ namespace Dont\Exception;
 
 use LogicException;
 
-class NonSerializableObject extends LogicException implements ExceptionInterface
+class NonSerialisableObject extends LogicException implements ExceptionInterface
 {
     /**
      * @param object $object
      *
-     * @return NonSerializableObject
+     * @return NonSerialisableObject
      *
      * @throws TypeError
      */
-    public static function fromAttemptedSerialization($object) : self
+    public static function fromAttemptedSerialisation($object) : self
     {
         if (! is_object($object)) {
             throw TypeError::fromNonObject($object);
         }
 
         $template = <<<'ERROR'
-The given object %s#%s is not designed to be serialized, yet serialization was attempted.
+The given object %s#%s is not designed to be serialised, yet serialisation was attempted.
 
-This error is raised because the author of %s didn't design it to be serializable, nor can
-guarantee that it will function correctly after serialization, nor can guarantee that all
-its internal components are serializable.
+This error is raised because the author of %s didn't design it to be serialisable, nor can
+guarantee that it will function correctly after serialisation, nor can guarantee that all
+its internal components are serialisable.
 
-Please do not serialize %s instances.
+Please do not serialise %s instances.
 ERROR;
 
         $className = get_class($object);

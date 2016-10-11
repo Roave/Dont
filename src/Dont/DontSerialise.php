@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Dont;
 
-use Dont\Exception\NonSerializableObject;
+use Dont\Exception\NonSerialisableObject;
 use Dont\Exception\TypeError;
 
-trait DontSerialize
+trait DontSerialise
 {
     /**
      * @return void
      *
-     * @throws NonSerializableObject
+     * @throws NonSerialisableObject
      * @throws TypeError
      */
     final public function __sleep()
     {
-        throw NonSerializableObject::fromAttemptedSerialization($this);
+        throw NonSerialisableObject::fromAttemptedSerialisation($this);
     }
 }

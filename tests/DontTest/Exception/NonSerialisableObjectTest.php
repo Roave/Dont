@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace DontTest\Exception;
 
 use Dont\Exception\ExceptionInterface;
-use Dont\Exception\NonSerializableObject;
+use Dont\Exception\NonSerialisableObject;
 use Dont\Exception\TypeError;
 use LogicException;
 use stdClass;
 
 /**
- * @covers \Dont\Exception\NonSerializableObject
+ * @covers \Dont\Exception\NonSerialisableObject
  */
-final class NonSerializableObjectTest extends \PHPUnit_Framework_TestCase
+final class NonSerialisableObjectTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider objectProvider
@@ -22,21 +22,21 @@ final class NonSerializableObjectTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testFromAttemptedSerialization($object)
+    public function testFromAttemptedSerialisation($object)
     {
-        $exception = NonSerializableObject::fromAttemptedSerialization($object);
+        $exception = NonSerialisableObject::fromAttemptedSerialisation($object);
 
-        self::assertInstanceOf(NonSerializableObject::class, $exception);
+        self::assertInstanceOf(NonSerialisableObject::class, $exception);
         self::assertInstanceOf(LogicException::class, $exception);
         self::assertInstanceOf(ExceptionInterface::class, $exception);
 
         $expected = 'The given object ' . get_class($object)
-            . '#' . spl_object_hash($object) . " is not designed to be serialized, yet serialization was attempted.\n\n"
+            . '#' . spl_object_hash($object) . " is not designed to be serialised, yet serialisation was attempted.\n\n"
             . 'This error is raised because the author of ' . get_class($object)
-            . " didn't design it to be serializable, nor can\n"
-            . "guarantee that it will function correctly after serialization, nor can guarantee that all\n"
-            . "its internal components are serializable.\n\n"
-            . 'Please do not serialize ' . get_class($object) . ' instances.';
+            . " didn't design it to be serialisable, nor can\n"
+            . "guarantee that it will function correctly after serialisation, nor can guarantee that all\n"
+            . "its internal components are serialisable.\n\n"
+            . 'Please do not serialise ' . get_class($object) . ' instances.';
 
         self::assertSame($expected, $exception->getMessage());
     }
@@ -63,7 +63,7 @@ final class NonSerializableObjectTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(TypeError::class);
 
-        NonSerializableObject::fromAttemptedSerialization($nonObject);
+        NonSerialisableObject::fromAttemptedSerialisation($nonObject);
     }
 
     /**
