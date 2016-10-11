@@ -19,10 +19,8 @@ final class NonDeserialisableObjectTest extends \PHPUnit_Framework_TestCase
      * @dataProvider objectProvider
      *
      * @param object $object
-     *
-     * @return void
      */
-    public function testFromAttemptedDeSerialisation($object)
+    public function testFromAttemptedDeSerialisation($object) : void
     {
         $exception = NonDeserialisableObject::fromAttemptedDeSerialisation($object);
 
@@ -57,10 +55,8 @@ final class NonDeserialisableObjectTest extends \PHPUnit_Framework_TestCase
      * @dataProvider nonObjectProvider
      *
      * @param mixed $nonObject
-     *
-     * @return void
      */
-    public function testWillThrowOnNonObject($nonObject)
+    public function testWillThrowOnNonObject($nonObject) : void
     {
         $this->expectException(TypeError::class);
 

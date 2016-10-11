@@ -16,10 +16,8 @@ final class TypeErrorTest extends \PHPUnit_Framework_TestCase
      * @dataProvider nonObjectProvider
      *
      * @param mixed $nonObject
-     *
-     * @return void
      */
-    public function testFromNonObject($nonObject)
+    public function testFromNonObject($nonObject) : void
     {
         $exception = TypeError::fromNonObject($nonObject);
 

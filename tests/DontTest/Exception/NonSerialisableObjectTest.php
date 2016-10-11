@@ -19,10 +19,8 @@ final class NonSerialisableObjectTest extends \PHPUnit_Framework_TestCase
      * @dataProvider objectProvider
      *
      * @param object $object
-     *
-     * @return void
      */
-    public function testFromAttemptedSerialisation($object)
+    public function testFromAttemptedSerialisation($object) : void
     {
         $exception = NonSerialisableObject::fromAttemptedSerialisation($object);
 
@@ -56,10 +54,8 @@ final class NonSerialisableObjectTest extends \PHPUnit_Framework_TestCase
      * @dataProvider nonObjectProvider
      *
      * @param mixed $nonObject
-     *
-     * @return void
      */
-    public function testWillThrowOnNonObject($nonObject)
+    public function testWillThrowOnNonObject($nonObject) : void
     {
         $this->expectException(TypeError::class);
 

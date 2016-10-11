@@ -12,14 +12,14 @@ use Dont\Exception\NonDeserialisableObject;
  */
 final class DontDeserialiseTest extends \PHPUnit_Framework_TestCase
 {
-    public function testWillThrowOnSerialisationAttempt()
+    public function testWillThrowOnSerialisationAttempt() : void
     {
         $this->expectException(NonDeserialisableObject::class);
 
         unserialize('O:31:"DontTestAsset\NonDeserialisable":0:{}');
     }
 
-    public function testSerialisePreventionIsFinal()
+    public function testSerialisePreventionIsFinal() : void
     {
         self::assertTrue((new \ReflectionMethod(DontDeserialise::class, '__wakeup'))->isFinal());
     }

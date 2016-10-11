@@ -12,7 +12,7 @@ use Throwable;
  */
 final class ExceptionInterfaceTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIsThrowable()
+    public function testIsThrowable() : void
     {
         self::assertSame(
             [Throwable::class],
@@ -20,7 +20,7 @@ final class ExceptionInterfaceTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testIsInterface()
+    public function testIsInterface() : void
     {
         self::assertTrue(interface_exists(ExceptionInterface::class));
     }

@@ -13,7 +13,7 @@ use DontTestAsset\NotSerialisable;
  */
 final class DontSerialiseTest extends \PHPUnit_Framework_TestCase
 {
-    public function testWillThrowOnSerialisationAttempt()
+    public function testWillThrowOnSerialisationAttempt() : void
     {
         $object = new NotSerialisable();
 
@@ -22,7 +22,7 @@ final class DontSerialiseTest extends \PHPUnit_Framework_TestCase
         serialize($object);
     }
 
-    public function testSerialisePreventionIsFinal()
+    public function testSerialisePreventionIsFinal() : void
     {
         self::assertTrue((new \ReflectionMethod(DontSerialise::class, '__sleep'))->isFinal());
     }
