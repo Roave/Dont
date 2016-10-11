@@ -6,6 +6,7 @@ namespace DontTest;
 
 use Dont\Exception\ExceptionInterface;
 use Dont\Exception\NonSerializableObject;
+use Dont\Exception\TypeError;
 use LogicException;
 use stdClass;
 
@@ -48,6 +49,36 @@ final class NonSerializableObjectTest extends \PHPUnit_Framework_TestCase
         return [
             [new stdClass()],
             [$this],
+        ];
+    }
+
+    /**
+     * @dataProvider nonObjectProvider
+     *
+     * @param mixed $nonObject
+     *
+     * @return void
+     */
+    public function testWillThrowOnNonObject($nonObject)
+    {
+        $this->expectException(TypeError::class);
+
+        NonSerializableObject::fromAttemptedSerialization($nonObject);
+    }
+
+    /**
+     * @return mixed[][]
+     */
+    public function nonObjectProvider() : array
+    {
+        return [
+            [null],
+            [true],
+            [123],
+            [12.3],
+            ['foo'],
+            [[]],
+            [STDERR],
         ];
     }
 }
