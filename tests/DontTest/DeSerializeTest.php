@@ -18,4 +18,9 @@ final class DeSerializeTest extends \PHPUnit_Framework_TestCase
 
         unserialize('O:31:"DontTestAsset\NonDeSerializable":0:{}');
     }
+
+    public function testSerializePreventionIsFinal()
+    {
+        self::assertTrue((new \ReflectionMethod(DeSerialize::class, '__wakeup'))->isFinal());
+    }
 }
