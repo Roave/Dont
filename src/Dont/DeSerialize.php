@@ -15,7 +15,7 @@ trait DeSerialize
      * @throws NonDeSerializableObject
      * @throws TypeError
      */
-    public function __wakeup()
+    final public function __wakeup()
     {
         throw NonDeSerializableObject::fromAttemptedDeSerialization($this);
     }
