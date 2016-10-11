@@ -22,6 +22,7 @@ The package currently provides two traits:
 
  * `Dont\DontDeserialise` 
  * `Dont\DontSerialize` 
+ * `Dont\DontClone` 
 
 Usage is straightforward:
 
@@ -41,6 +42,5 @@ time with `unserialize()`.
 
 ## Further development
 
-Further traits may be implemented in future, such as preventing
-`clone` usage, or preventing read/write of dynamically defined
+Further traits may be implemented in future, such as preventing read/write of dynamically defined
 properties.
