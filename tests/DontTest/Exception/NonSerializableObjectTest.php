@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DontTest;
+namespace DontTest\Exception;
 
 use Dont\Exception\ExceptionInterface;
 use Dont\Exception\NonSerializableObject;
