@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace DontTest\Exception;
 
@@ -29,12 +29,13 @@ final class NonDeserialisableObjectTest extends \PHPUnit_Framework_TestCase
         self::assertInstanceOf(ExceptionInterface::class, $exception);
 
         $expected = 'The given object ' . get_class($object)
-            . '#' . spl_object_hash($object) . ' is not designed to be deserialised, '
-            . "yet deserialisation was attempted.\n\n"
+            . '#' . spl_object_hash($object) . ' is not designed to be deserialized, '
+            . "yet deserialization was attempted using\n"
+            . " the `unserialize` funtion."
+            . "\n\n"
             . 'This error is raised because the author of ' . get_class($object)
-            . " didn't design it to be deserialisable, nor can\n"
-            . "guarantee that it will function correctly after deserialisation, nor can guarantee that all\n"
-            . "its internal components are deserialisable.\n\n"
+            . " didn't design it to be deserialized, nor can guarantee \n"
+            . "that all its internal components are deserializable. \n\n"
             . 'Please do not use unserialize() to produce ' . get_class($object) . ' instances.';
 
         self::assertSame($expected, $exception->getMessage());
