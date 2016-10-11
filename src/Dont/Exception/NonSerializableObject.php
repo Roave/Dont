@@ -12,9 +12,15 @@ class NonSerializableObject extends LogicException implements ExceptionInterface
      * @param object $object
      *
      * @return NonSerializableObject
+     *
+     * @throws TypeError
      */
     public static function fromAttemptedSerialization($object) : self
     {
+        if (! is_object($object)) {
+            throw TypeError::fromNonObject($object);
+        }
+
         $template = <<<'ERROR'
 The given object %s#%s is not designed to be serialized, yet serialization was attempted.
 
