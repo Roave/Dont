@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Dont;
 
-use Dont\Exception\NonDeserialisableObject;
+use Dont\Exception\ShouldNotUnserializeObject;
 use Dont\Exception\TypeError;
 
 trait DontDeserialise
 {
     /**
-     * @throws NonDeserialisableObject
+     * @throws ShouldNotUnserializeObject
      * @throws TypeError
      */
     final public function __wakeup() : void
     {
-        throw NonDeserialisableObject::fromAttemptedDeSerialisation($this);
+        throw ShouldNotUnserializeObject::fromAttemptedDeSerialisation($this);
     }
 }
