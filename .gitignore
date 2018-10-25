@@ -6,3 +6,5 @@ phpmd.xml
 phpdox.xml
 clover.xml
 .couscous
+infection.json
+infection-log.txt
