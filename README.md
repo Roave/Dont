@@ -18,11 +18,13 @@ composer require roave/dont
 
 ## Usage
 
-The package currently provides three traits:
+The package currently provides five traits:
 
- * `Dont\DontDeserialise` 
- * `Dont\DontSerialize` 
- * `Dont\DontClone` 
+ * `Dont\DontDeserialise`
+ * `Dont\DontSerialize`
+ * `Dont\DontClone`
+ * `Dont\DontGet`
+ * `Dont\DontSet`
 
 Usage is straightforward:
 
@@ -39,8 +41,3 @@ serialize(new MyClass); // will throw an exception
 
 The same applies to `DontDeserialise`, but this
 time with `unserialize()`.
-
-## Further development
-
-Further traits may be implemented in future, such as preventing read/write of dynamically defined
-properties.
