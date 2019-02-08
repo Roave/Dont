@@ -10,7 +10,7 @@ use DontTestAsset\NonCallable;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers DontCall
+ * @covers \Dont\DontCall
  */
 final class DontCallTest extends TestCase
 {
