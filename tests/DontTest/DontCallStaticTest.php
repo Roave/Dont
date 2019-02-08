@@ -17,6 +17,7 @@ final class DontCallStaticTest extends TestCase
     public function testWillThrowOnStaticCallAttempt() : void
     {
         $this->expectException(NonStaticCallableClass::class);
+        $this->expectExceptionMessage('NonStaticCallable');
 
         NonStaticCallable::undefinedMethod();
     }

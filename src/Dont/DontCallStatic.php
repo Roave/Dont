@@ -13,6 +13,6 @@ trait DontCallStatic
      */
     final public static function __callStatic($name, $arguments)
     {
-        throw NonStaticCallableClass::fromAttemptedStaticCall(self::class, $name);
+        throw NonStaticCallableClass::fromAttemptedStaticCall(static::class, $name);
     }
 }
