@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Throwable;
 
 /**
- * @covers \Dont\Exception\ExceptionInterface
+ * @coversNothing
  */
 final class ExceptionInterfaceTest extends TestCase
 {
