@@ -7,11 +7,12 @@ namespace DontTest;
 use Dont\Exception\NonSerialisableObject;
 use Dont\DontSerialise;
 use DontTestAsset\NotSerialisable;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Dont\DontSerialise
  */
-final class DontSerialiseTest extends \PHPUnit_Framework_TestCase
+final class DontSerialiseTest extends TestCase
 {
     public function testWillThrowOnSerialisationAttempt() : void
     {

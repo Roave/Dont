@@ -8,12 +8,13 @@ use Dont\Exception\ExceptionInterface;
 use Dont\Exception\NonSettableObject;
 use Dont\Exception\TypeError;
 use LogicException;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**
  * @covers \Dont\Exception\NonSettableObject
  */
-final class NonSettableObjectTest extends \PHPUnit_Framework_TestCase
+final class NonSettableObjectTest extends TestCase
 {
     /**
      * @dataProvider objectProvider

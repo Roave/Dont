@@ -8,12 +8,13 @@ use Dont\Exception\ExceptionInterface;
 use Dont\Exception\NonSerialisableObject;
 use Dont\Exception\TypeError;
 use LogicException;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 /**
  * @covers \Dont\Exception\NonSerialisableObject
  */
-final class NonSerialisableObjectTest extends \PHPUnit_Framework_TestCase
+final class NonSerialisableObjectTest extends TestCase
 {
     /**
      * @dataProvider objectProvider

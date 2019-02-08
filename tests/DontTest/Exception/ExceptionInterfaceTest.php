@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace DontTest\Exception;
 
 use Dont\Exception\ExceptionInterface;
+use PHPUnit\Framework\TestCase;
 use Throwable;
 
 /**
  * @covers \Dont\Exception\ExceptionInterface
  */
-final class ExceptionInterfaceTest extends \PHPUnit_Framework_TestCase
+final class ExceptionInterfaceTest extends TestCase
 {
     public function testIsThrowable() : void
     {

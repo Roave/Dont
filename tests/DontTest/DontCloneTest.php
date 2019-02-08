@@ -7,11 +7,12 @@ namespace DontTest;
 use Dont\Exception\NonCloneableObject;
 use Dont\DontClone;
 use DontTestAsset\NonCloneable;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Dont\DontClone
  */
-final class DontCloneTest extends \PHPUnit_Framework_TestCase
+final class DontCloneTest extends TestCase
 {
     public function testWillThrowOnCloningAttempt() : void
     {

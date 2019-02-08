@@ -6,11 +6,12 @@ namespace DontTest\Exception;
 
 use Dont\Exception\ExceptionInterface;
 use Dont\Exception\TypeError;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Dont\Exception\TypeError
  */
-final class TypeErrorTest extends \PHPUnit_Framework_TestCase
+final class TypeErrorTest extends TestCase
 {
     /**
      * @dataProvider nonObjectProvider

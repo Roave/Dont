@@ -7,11 +7,12 @@ namespace DontTest;
 use Dont\DontGet;
 use Dont\Exception\NonGettableObject;
 use DontTestAsset\NotGetOrSettable;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Dont\DontGet
  */
-final class DontGetTest extends \PHPUnit_Framework_TestCase
+final class DontGetTest extends TestCase
 {
     public function testWillThrowOnSerialisationAttempt() : void
     {
