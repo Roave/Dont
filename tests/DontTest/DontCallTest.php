@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class DontCallTest extends TestCase
 {
-    public function testWillThrowOnCloningAttempt() : void
+    public function testWillThrowOnCallingAttempt() : void
     {
         $object = new NonCallable();
 
@@ -23,7 +23,7 @@ final class DontCallTest extends TestCase
          $object->undefinedMethod();
     }
 
-    public function testClonePreventionIsFinal() : void
+    public function testCallPreventionIsFinal() : void
     {
         self::assertTrue((new \ReflectionMethod(DontCall::class, '__call'))->isFinal());
     }

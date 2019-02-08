@@ -20,7 +20,7 @@ ERROR;
      * @param object $object
      * @throws TypeError
      */
-    public static function fromAttemptedCall($object, string $property) : self
+    public static function fromAttemptedCall($object, string $method) : self
     {
         if (! is_object($object)) {
             throw TypeError::fromNonObject($object);
@@ -32,7 +32,7 @@ ERROR;
             self::ERROR_TEMPLATE,
             $className,
             spl_object_hash($object),
-            $property
+            $method
         ));
     }
 }
