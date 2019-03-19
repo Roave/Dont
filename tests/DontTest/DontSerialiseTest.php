@@ -6,6 +6,7 @@ namespace DontTest;
 
 use Dont\Exception\NonSerialisableObject;
 use Dont\DontSerialise;
+use DontTestAsset\DontDoIt;
 use DontTestAsset\NotSerialisable;
 use PHPUnit\Framework\TestCase;
 
@@ -14,13 +15,27 @@ use PHPUnit\Framework\TestCase;
  */
 final class DontSerialiseTest extends TestCase
 {
-    public function testWillThrowOnSerialisationAttempt() : void
+    /**
+     * @dataProvider nonSerialisableObject
+     *
+     * @param object $object
+     */
+    public function testWillThrowOnSerialisationAttempt($object) : void
     {
-        $object = new NotSerialisable();
-
         $this->expectException(NonSerialisableObject::class);
 
         serialize($object);
+    }
+
+    /**
+     * @return object[]
+     */
+    public function nonSerialisableObject() : array
+    {
+        return [
+            [new NotSerialisable()],
+            [new DontDoIt()],
+        ];
     }
 
     public function testSerialisePreventionIsFinal() : void

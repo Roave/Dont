@@ -7,6 +7,7 @@ namespace DontTest;
 use Dont\Exception\NonCloneableObject;
 use Dont\DontClone;
 use DontTestAsset\NonCloneable;
+use DontTestAsset\DontDoIt;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,13 +15,27 @@ use PHPUnit\Framework\TestCase;
  */
 final class DontCloneTest extends TestCase
 {
-    public function testWillThrowOnCloningAttempt() : void
+    /**
+     * @dataProvider nonCloneableObject
+     *
+     * @param object $object
+     */
+    public function testWillThrowOnCloningAttempt($object) : void
     {
-        $object = new NonCloneable();
-
         $this->expectException(NonCloneableObject::class);
 
         $clonedObject = clone $object;
+    }
+
+    /**
+     * @return object[]
+     */
+    public function nonCloneableObject() : array
+    {
+        return [
+            [new NonCloneable()],
+            [new DontDoIt()],
+        ];
     }
 
     public function testClonePreventionIsFinal() : void
