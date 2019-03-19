@@ -6,6 +6,7 @@ namespace DontTest;
 
 use Dont\DontSet;
 use Dont\Exception\NonSettableObject;
+use DontTestAsset\DontDoIt;
 use DontTestAsset\NotGetOrSettable;
 use PHPUnit\Framework\TestCase;
 
@@ -14,13 +15,27 @@ use PHPUnit\Framework\TestCase;
  */
 final class DontSetTest extends TestCase
 {
-    public function testWillThrowOnSerialisationAttempt() : void
+    /**
+     * @dataProvider notGetOrSettableObject
+     *
+     * @param object $object
+     */
+    public function testWillThrowOnSerialisationAttempt($object) : void
     {
-        $object = new NotGetOrSettable();
-
         $this->expectException(NonSettableObject::class);
 
         $object->undefinedProperty = 1;
+    }
+
+    /**
+     * @return object[]
+     */
+    public function notGetOrSettableObject() : array
+    {
+        return [
+            [new NotGetOrSettable()],
+            [new DontDoIt()],
+        ];
     }
 
     public function testGetIsFinal() : void

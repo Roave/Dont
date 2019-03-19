@@ -7,6 +7,7 @@ namespace DontTest;
 use Dont\DontCall;
 use Dont\Exception\NonCallableObject;
 use DontTestAsset\NonCallable;
+use DontTestAsset\DontDoIt;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,13 +15,27 @@ use PHPUnit\Framework\TestCase;
  */
 final class DontCallTest extends TestCase
 {
-    public function testWillThrowOnCallingAttempt() : void
+    /**
+     * @dataProvider nonCloneableObject
+     *
+     * @param object $object
+     */
+    public function testWillThrowOnCallingAttempt($object) : void
     {
-        $object = new NonCallable();
-
         $this->expectException(NonCallableObject::class);
 
-         $object->undefinedMethod();
+        $object->undefinedMethod();
+    }
+
+    /**
+     * @return object[]
+     */
+    public function nonCloneableObject() : array
+    {
+        return [
+            [new NonCallable()],
+            [new DontDoIt()],
+        ];
     }
 
     public function testCallPreventionIsFinal() : void

@@ -6,6 +6,8 @@ namespace DontTest;
 
 use Dont\DontDeserialise;
 use Dont\Exception\NonDeserialisableObject;
+use DontTestAsset\NonDeserialisable;
+use DontTestAsset\DontDoIt;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,11 +15,27 @@ use PHPUnit\Framework\TestCase;
  */
 final class DontDeserialiseTest extends TestCase
 {
-    public function testWillThrowOnSerialisationAttempt() : void
+    /**
+     * @dataProvider nonDeserialisableObject
+     *
+     * @param string $className
+     */
+    public function testWillThrowOnSerialisationAttempt($className) : void
     {
         $this->expectException(NonDeserialisableObject::class);
 
-        unserialize('O:31:"DontTestAsset\NonDeserialisable":0:{}');
+        unserialize(\sprintf('O:%s:"%s":0:{}', \strlen($className), $className));
+    }
+
+    /**
+     * @return string[]
+     */
+    public function nonDeserialisableObject() : array
+    {
+        return [
+            [NonDeserialisable::class],
+            [DontDoIt::class],
+        ];
     }
 
     public function testSerialisePreventionIsFinal() : void

@@ -6,6 +6,7 @@ namespace DontTest;
 
 use Dont\DontCallStatic;
 use Dont\Exception\NonStaticCallableClass;
+use DontTestAsset\DontDoIt;
 use DontTestAsset\NonStaticCallable;
 use PHPUnit\Framework\TestCase;
 
@@ -14,12 +15,28 @@ use PHPUnit\Framework\TestCase;
  */
 final class DontCallStaticTest extends TestCase
 {
-    public function testWillThrowOnStaticCallAttempt() : void
+    /**
+     * @dataProvider NonStaticCallableObject
+     *
+     * @param string $className
+     */
+    public function testWillThrowOnStaticCallAttempt($className) : void
     {
         $this->expectException(NonStaticCallableClass::class);
-        $this->expectExceptionMessage('NonStaticCallable');
+        $this->expectExceptionMessage($className);
 
-        NonStaticCallable::undefinedMethod();
+        $className::undefinedMethod();
+    }
+
+    /**
+     * @return string[]
+     */
+    public function NonStaticCallableObject() : array
+    {
+        return [
+            [NonStaticCallable::class],
+            [DontDoIt::class],
+        ];
     }
 
     public function testCallStaticPreventionIsFinal() : void
