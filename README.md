@@ -18,7 +18,7 @@ composer require roave/dont
 
 ## Usage
 
-The package currently provides seven traits:
+The package currently provides eight traits:
 
  * `Dont\DontDeserialise`
  * `Dont\DontSerialize`
@@ -27,6 +27,7 @@ The package currently provides seven traits:
  * `Dont\DontSet`
  * `Dont\DontCall`
  * `Dont\DontCallStatic`
+ * `Dont\JustDont`
 
 Usage is straightforward:
 
@@ -43,3 +44,6 @@ serialize(new MyClass); // will throw an exception
 
 The same applies to `DontDeserialise`, but this
 time with `unserialize()`.
+
+`Dont\JustDont` includes other seven traits and is the recommended one to use.
+
