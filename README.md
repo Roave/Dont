@@ -18,7 +18,7 @@ composer require roave/dont
 
 ## Usage
 
-The package currently provides eight traits:
+The package currently provides the following traits:
 
  * `Dont\DontDeserialise`
  * `Dont\DontSerialize`
