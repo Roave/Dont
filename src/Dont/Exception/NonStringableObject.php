@@ -15,18 +15,10 @@ You tried to access a method called "__toString()".
 ERROR;
 
     /**
-     * @param object $object
-     *
      * @return NonStringableObject
-     *
-     * @throws TypeError
      */
-    public static function fromAttemptedToString($object) : self
+    public static function fromAttemptedToString(object $object) : self
     {
-        if (! is_object($object)) {
-            throw TypeError::fromNonObject($object);
-        }
-
         $className = get_class($object);
 
         return new self(sprintf(
