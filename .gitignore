@@ -8,3 +8,4 @@ clover.xml
 .couscous
 infection.json
 infection-log.txt
+.phpunit.result.cache
