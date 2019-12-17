@@ -47,32 +47,4 @@ final class NonStringableObjectTest extends TestCase
             [$this],
         ];
     }
-
-    /**
-     * @dataProvider nonObjectProvider
-     *
-     * @param mixed $nonObject
-     */
-    public function testWillThrowOnNonObject($nonObject) : void
-    {
-        $this->expectException(TypeError::class);
-
-        NonStringableObject::fromAttemptedToString($nonObject);
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function nonObjectProvider() : array
-    {
-        return [
-            [null],
-            [true],
-            [123],
-            [12.3],
-            ['foo'],
-            [[]],
-            [STDERR],
-        ];
-    }
 }

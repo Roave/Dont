@@ -47,33 +47,4 @@ final class NonCallableObjectTest extends TestCase
             [$this],
         ];
     }
-
-    /**
-     * @dataProvider nonObjectProvider
-     *
-     * @param mixed $nonObject
-     */
-    public function testWillThrowOnNonObject($nonObject) : void
-    {
-        $this->expectException(TypeError::class);
-
-        NonCallableObject::fromAttemptedCall($nonObject, 'propertyName');
-    }
-
-    /**
-     * @return mixed[][]
-     */
-    public function nonObjectProvider() : array
-    {
-        return [
-            [null],
-            [true],
-            [123],
-            [12.3],
-            ['foo'],
-            [[]],
-            [STDERR],
-        ];
-    }
-
 }
