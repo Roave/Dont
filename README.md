@@ -27,6 +27,7 @@ The package currently provides the following traits:
  * `Dont\DontSet`
  * `Dont\DontCall`
  * `Dont\DontCallStatic`
+ * `Dont\DontToString` 
  * `Dont\JustDont`
 
 Usage is straightforward:
@@ -45,5 +46,5 @@ serialize(new MyClass); // will throw an exception
 The same applies to `DontDeserialise`, but this
 time with `unserialize()`.
 
-`Dont\JustDont` includes other seven traits and is the recommended one to use.
+`Dont\JustDont` includes other eight traits and is the recommended one to use.
 
