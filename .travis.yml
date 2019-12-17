@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.4
+
+before_script:
+  - composer update
+
+script:
+  - ./vendor/bin/phpunit --disallow-test-output --coverage-clover ./clover.xml
+  - if php -i |grep -qE xdebug; then ./vendor/bin/infection --min-msi=100 --min-covered-msi=100 --threads=4; fi
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover ./clover.xml
