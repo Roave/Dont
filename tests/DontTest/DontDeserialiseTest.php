@@ -24,7 +24,11 @@ final class DontDeserialiseTest extends TestCase
     public function testWillThrowOnSerialisationAttempt($className) : void
     {
         $this->expectException(NonDeserialisableObject::class);
-        unserialize(\sprintf('O:%d:"%s":0:{}', \strlen($className), $className));
+        if($className === 'DontTestAsset\\NonDeserialisableImplementingSerializable'){
+            unserialize(\sprintf('C:55:"DontTestAsset\NonDeserialisableImplementingSerializable":6:{a:0:{}}'));
+        } else {
+            unserialize(\sprintf('O:%d:"%s":0:{}', \strlen($className), $className));
+        }
     }
 
     /**
