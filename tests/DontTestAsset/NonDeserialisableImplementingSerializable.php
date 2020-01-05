@@ -7,7 +7,7 @@ namespace DontTestAsset;
 use Dont\DontDeserialise;
 use Dont\DontSerialise;
 
-final class NonDeserialisableImplementingSerialisable implements \Serialisable
+final class NonDeserialisableImplementingSerializable implements \Serializable
 {
     use DontDeserialise;
     use DontSerialise;

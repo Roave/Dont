@@ -8,6 +8,7 @@ use Dont\Exception\NonSerialisableObject;
 use Dont\DontSerialise;
 use DontTestAsset\DontDoIt;
 use DontTestAsset\NotSerialisable;
+use DontTestAsset\NonDeserialisableImplementingSerializable;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,7 +35,7 @@ final class DontSerialiseTest extends TestCase
     {
         return [
             [new NotSerialisable()],
-            [new NonDeserialisableImplementingSerialisable()],
+            [new NonDeserialisableImplementingSerializable()],
             [new DontDoIt()],
         ];
     }
