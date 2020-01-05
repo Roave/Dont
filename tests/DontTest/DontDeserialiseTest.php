@@ -23,8 +23,7 @@ final class DontDeserialiseTest extends TestCase
     public function testWillThrowOnSerialisationAttempt($className) : void
     {
         $this->expectException(NonDeserialisableObject::class);
-
-        unserialize(\sprintf('O:%s:"%s":0:{}', \strlen($className), $className));
+        unserialize(\sprintf('O:%d:"%s":0:{}', \strlen($className), $className));
     }
 
     /**
@@ -34,6 +33,7 @@ final class DontDeserialiseTest extends TestCase
     {
         return [
             [NonDeserialisable::class],
+            [NonDeserialisableImplementingSerialisable::class],
             [DontDoIt::class],
         ];
     }
@@ -41,5 +41,7 @@ final class DontDeserialiseTest extends TestCase
     public function testSerialisePreventionIsFinal() : void
     {
         self::assertTrue((new \ReflectionMethod(DontDeserialise::class, '__wakeup'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(DontDeserialise::class, 'unserialize'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(DontDeserialise::class, '__unserialize'))->isFinal());
     }
 }

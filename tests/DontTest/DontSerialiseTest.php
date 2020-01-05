@@ -34,6 +34,7 @@ final class DontSerialiseTest extends TestCase
     {
         return [
             [new NotSerialisable()],
+            [new NonDeserialisableImplementingSerialisable()],
             [new DontDoIt()],
         ];
     }
@@ -41,5 +42,7 @@ final class DontSerialiseTest extends TestCase
     public function testSerialisePreventionIsFinal() : void
     {
         self::assertTrue((new \ReflectionMethod(DontSerialise::class, '__sleep'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(DontSerialise::class, 'serialize'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(DontSerialise::class, '__serialize'))->isFinal());
     }
 }
