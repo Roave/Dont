@@ -49,4 +49,29 @@ final class DontDeserialiseTest extends TestCase
         self::assertTrue((new \ReflectionMethod(DontDeserialise::class, 'unserialize'))->isFinal());
         self::assertTrue((new \ReflectionMethod(DontDeserialise::class, '__unserialize'))->isFinal());
     }
+
+    public function testManuallyInvokingMethods() : void
+    {
+        $dont = new DontDoIt();
+
+        try {
+            $dont->__unserialize([]);
+            self::markAsFailed('This method must always throw');
+        } catch (NonDeserialisableObject $_) {
+        }
+
+        try {
+            $dont->unserialize([]);
+            self::markAsFailed('This method must always throw');
+        } catch (NonDeserialisableObject $_) {
+        }
+
+        try {
+            $dont->__wakeup([]);
+            self::markAsFailed('This method must always throw');
+        } catch (NonDeserialisableObject $_) {
+        }
+
+        self::assertTrue(true);
+    }
 }

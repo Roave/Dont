@@ -46,4 +46,29 @@ final class DontSerialiseTest extends TestCase
         self::assertTrue((new \ReflectionMethod(DontSerialise::class, 'serialize'))->isFinal());
         self::assertTrue((new \ReflectionMethod(DontSerialise::class, '__serialize'))->isFinal());
     }
+
+    public function testManuallyInvokingMethods() : void
+    {
+        $dont = new DontDoIt();
+
+        try {
+            $dont->__serialize();
+            self::markAsFailed('This method must always throw');
+        } catch (NonSerialisableObject $_) {
+        }
+
+        try {
+            $dont->serialize();
+            self::markAsFailed('This method must always throw');
+        } catch (NonSerialisableObject $_) {
+        }
+
+        try {
+            $dont->__sleep();
+            self::markAsFailed('This method must always throw');
+        } catch (NonSerialisableObject $_) {
+        }
+
+        self::assertTrue(true);
+    }
 }
