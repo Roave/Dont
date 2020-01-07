@@ -17,4 +17,22 @@ trait DontDeserialise
     {
         throw NonDeserialisableObject::fromAttemptedDeSerialisation($this);
     }
+
+    /**
+     * @throws NonDeserialisableObject
+     * @throws TypeError
+     */
+    final public function __unserialize() : array
+    {
+        throw NonDeserialisableObject::fromAttemptedDeSerialisation($this);
+    }
+
+    /**
+     * @throws NonDeserialisableObject
+     * @throws TypeError
+     */
+    final public function unserialize($_) : array
+    {
+        throw NonDeserialisableObject::fromAttemptedDeSerialisation($this);
+    }
 }

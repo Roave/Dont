@@ -8,6 +8,7 @@ use Dont\Exception\NonSerialisableObject;
 use Dont\DontSerialise;
 use DontTestAsset\DontDoIt;
 use DontTestAsset\NotSerialisable;
+use DontTestAsset\NonDeserialisableImplementingSerializable;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,6 +35,7 @@ final class DontSerialiseTest extends TestCase
     {
         return [
             [new NotSerialisable()],
+            [new NonDeserialisableImplementingSerializable()],
             [new DontDoIt()],
         ];
     }
@@ -41,5 +43,28 @@ final class DontSerialiseTest extends TestCase
     public function testSerialisePreventionIsFinal() : void
     {
         self::assertTrue((new \ReflectionMethod(DontSerialise::class, '__sleep'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(DontSerialise::class, 'serialize'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(DontSerialise::class, '__serialize'))->isFinal());
+    }
+
+    public function testExceptionFrom__serialize() : void
+    {
+        $dont = new NonDeserialisableImplementingSerializable();
+        $this->expectException(NonSerialisableObject::class);
+        $dont->__serialize();
+    }
+
+    public function testExceptionFromSerialize() : void
+    {
+        $dont = new NonDeserialisableImplementingSerializable();
+        $this->expectException(NonSerialisableObject::class);
+        $dont->serialize();
+    }
+
+    public function testExceptionFrom__sleep() : void
+    {
+        $dont = new NonDeserialisableImplementingSerializable();
+        $this->expectException(NonSerialisableObject::class);
+        $dont->__sleep();
     }
 }

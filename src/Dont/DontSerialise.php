@@ -17,4 +17,22 @@ trait DontSerialise
     {
         throw NonSerialisableObject::fromAttemptedSerialisation($this);
     }
+
+    /**
+     * @throws NonSerialisableObject
+     * @throws TypeError
+     */
+    final public function __serialize() : void
+    {
+        throw NonSerialisableObject::fromAttemptedSerialisation($this);
+    }
+
+    /**
+     * @throws NonSerialisableObject
+     * @throws TypeError
+     */
+    final public function serialize() : void
+    {
+        throw NonSerialisableObject::fromAttemptedSerialisation($this);
+    }
 }
