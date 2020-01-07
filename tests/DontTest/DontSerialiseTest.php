@@ -58,7 +58,7 @@ final class DontSerialiseTest extends TestCase
     {
         $dont = new NonDeserialisableImplementingSerializable();
         $this->expectException(NonSerialisableObject::class);
-        $dont->serialize([]);
+        $dont->serialize();
     }
 
     public function testExceptionFrom__sleep() : void
