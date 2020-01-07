@@ -24,7 +24,7 @@ final class DontDeserialiseTest extends TestCase
     public function testWillThrowOnSerialisationAttempt($className) : void
     {
         $this->expectException(NonDeserialisableObject::class);
-        if($className === 'DontTestAsset\\NonDeserialisableImplementingSerializable'){
+        if($className === NonDeserialisableImplementingSerializable::class){
             unserialize(\sprintf('C:55:"DontTestAsset\NonDeserialisableImplementingSerializable":6:{a:0:{}}'));
         } else {
             unserialize(\sprintf('O:%d:"%s":0:{}', \strlen($className), $className));
@@ -50,28 +50,25 @@ final class DontDeserialiseTest extends TestCase
         self::assertTrue((new \ReflectionMethod(DontDeserialise::class, '__unserialize'))->isFinal());
     }
 
-    public function testManuallyInvokingMethods() : void
+    public function testExceptionFrom__unserialize() : void
     {
-        $dont = new DontDoIt();
-
-        try {
-            $dont->__unserialize([]);
-            self::markAsFailed('This method must always throw');
-        } catch (NonDeserialisableObject $_) {
-        }
-
-        try {
-            $dont->unserialize([]);
-            self::markAsFailed('This method must always throw');
-        } catch (NonDeserialisableObject $_) {
-        }
-
-        try {
-            $dont->__wakeup([]);
-            self::markAsFailed('This method must always throw');
-        } catch (NonDeserialisableObject $_) {
-        }
-
-        self::assertTrue(true);
+        $dont = new NonDeserialisableImplementingSerializable();
+        $this->expectException(NonDeserialisableObject::class);
+        $dont->__unserialize();
     }
+
+    public function testExceptionFromUnserialize() : void
+    {
+        $dont = new NonDeserialisableImplementingSerializable();
+        $this->expectException(NonDeserialisableObject::class);
+        $dont->unserialize([]);
+    }
+
+    public function testExceptionFrom__wakeup() : void
+    {
+        $dont = new NonDeserialisableImplementingSerializable();
+        $this->expectException(NonDeserialisableObject::class);
+        $dont->__wakeup();
+    }
+
 }
