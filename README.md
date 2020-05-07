@@ -21,7 +21,7 @@ composer require roave/dont
 The package currently provides the following traits:
 
  * `Dont\DontDeserialise`
- * `Dont\DontSerialize`
+ * `Dont\DontSerialise`
  * `Dont\DontClone`
  * `Dont\DontGet`
  * `Dont\DontSet`
