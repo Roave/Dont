@@ -15,9 +15,8 @@ final class ExceptionInterfaceTest extends TestCase
 {
     public function testIsThrowable() : void
     {
-        self::assertSame(
-            [Throwable::class],
-            (new \ReflectionClass(ExceptionInterface::class))->getInterfaceNames()
+        self::assertTrue(
+            in_array(Throwable::class, (new \ReflectionClass(ExceptionInterface::class))->getInterfaceNames())
         );
     }
 
