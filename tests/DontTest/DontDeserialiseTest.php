@@ -54,7 +54,7 @@ final class DontDeserialiseTest extends TestCase
     {
         $dont = new NonDeserialisableImplementingSerializable();
         $this->expectException(NonDeserialisableObject::class);
-        $dont->__unserialize();
+        $dont->__unserialize([]);
     }
 
     public function testExceptionFromUnserialize() : void

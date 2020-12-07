@@ -13,7 +13,7 @@ trait DontSerialise
      * @throws NonSerialisableObject
      * @throws TypeError
      */
-    final public function __sleep() : void
+    final public function __sleep() : array
     {
         throw NonSerialisableObject::fromAttemptedSerialisation($this);
     }
@@ -22,7 +22,7 @@ trait DontSerialise
      * @throws NonSerialisableObject
      * @throws TypeError
      */
-    final public function __serialize() : void
+    final public function __serialize() : array
     {
         throw NonSerialisableObject::fromAttemptedSerialisation($this);
     }

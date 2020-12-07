@@ -22,7 +22,7 @@ trait DontDeserialise
      * @throws NonDeserialisableObject
      * @throws TypeError
      */
-    final public function __unserialize() : array
+    final public function __unserialize(array $data) : void
     {
         throw NonDeserialisableObject::fromAttemptedDeSerialisation($this);
     }

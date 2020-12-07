@@ -1,17 +1,14 @@
 language: php
 
 php:
-  - 7.1
-  - 7.2
-  - 7.3
-  - 7.4
+  - 8.0
 
 before_script:
   - composer update
 
 script:
-  - ./vendor/bin/phpunit --disallow-test-output --coverage-clover ./clover.xml
-  - if php -i |grep -qE xdebug; then ./vendor/bin/infection --min-msi=100 --min-covered-msi=100 --threads=4; fi
+  - XDEBUG_MODE=coverage ./vendor/bin/phpunit --disallow-test-output --coverage-clover ./clover.xml
+  - if php -i |grep -qE xdebug; then XDEBUG_MODE=coverage ./vendor/bin/infection --min-msi=100 --min-covered-msi=100 --threads=4; fi
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
