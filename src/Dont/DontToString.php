@@ -11,7 +11,7 @@ use Dont\Exception\TypeError;
 trait DontToString
 {
     /**
-     * @throws NonCloneableObject
+     * @throws NonStringableObject
      * @throws TypeError
      */
     final public function __toString() : string
