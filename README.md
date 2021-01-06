@@ -18,14 +18,14 @@ composer require roave/dont
 
 The package currently provides the following traits:
 
- * `Dont\DontDeserialise`
- * `Dont\DontSerialise`
- * `Dont\DontClone`
- * `Dont\DontGet`
- * `Dont\DontSet`
- * `Dont\DontCall`
- * `Dont\DontCallStatic`
- * `Dont\JustDont`
+ * [`Dont\DontDeserialise`](docs/DontDeserialise.md)
+ * [`Dont\DontSerialise`](docs/DontSerialise.md)
+ * [`Dont\DontClone`](docs/DontClone.md)
+ * [`Dont\DontGet`](docs/DontGet.md)
+ * [`Dont\DontSet`](docs/DontSet.md)
+ * [`Dont\DontCall`](docs/DontCall.md)
+ * [`Dont\DontCallStatic`](docs/DontCallStatic.md)
+ * [`Dont\JustDont`](docs/JustDont.md)
 
 Usage is straightforward:
 
@@ -39,9 +39,3 @@ class MyClass
 
 serialize(new MyClass); // will throw an exception
 ```
-
-The same applies to `DontDeserialise`, but this
-time with `unserialize()`.
-
-`Dont\JustDont` includes other seven traits and is the recommended one to use.
-
