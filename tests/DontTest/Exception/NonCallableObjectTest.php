@@ -75,5 +75,4 @@ final class NonCallableObjectTest extends TestCase
             [STDERR],
         ];
     }
-
 }
