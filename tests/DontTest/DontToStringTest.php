@@ -46,7 +46,6 @@ final class DontToStringTest extends TestCase
     {
         return [
             [new NonStringable()],
-            [new DontDoIt()],
         ];
     }
 
