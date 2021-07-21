@@ -13,5 +13,4 @@ trait JustDont
     use DontClone;
     use DontSerialise;
     use DontDeserialise;
-    use DontToString;
 }
