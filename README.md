@@ -27,6 +27,7 @@ The package currently provides the following traits:
  * [`Dont\DontCallStatic`](docs/DontCallStatic.md)
  * [`Dont\DontToString`](docs/DontToString.md)
  * [`Dont\JustDont`](docs/JustDont.md)
+ * [`Dont\DontInstantiate`](docs/DontInstantiate.md)
 
 Usage is straightforward:
 
