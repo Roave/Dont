@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "8.0.* || 8.1.*"
+        "php": "~8.0.0 || ~8.1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3",
@@ -31,6 +31,14 @@
         "psr-4": {
             "DontTest\\": "tests/DontTest",
             "DontTestAsset\\": "tests/DontTestAsset"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": false
+        },
+        "platform": {
+            "php": "8.0.99"
         }
     }
 }
