@@ -19,7 +19,7 @@
         "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.6.7",
+        "phpunit/phpunit": "^10.5.9",
         "infection/infection": "^0.26.19"
     },
     "autoload": {
