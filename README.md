@@ -18,16 +18,16 @@ composer require roave/dont
 
 The package currently provides the following traits:
 
- * [`Dont\DontDeserialise`](docs/DontDeserialise.md)
- * [`Dont\DontSerialise`](docs/DontSerialise.md)
- * [`Dont\DontClone`](docs/DontClone.md)
- * [`Dont\DontGet`](docs/DontGet.md)
- * [`Dont\DontSet`](docs/DontSet.md)
- * [`Dont\DontCall`](docs/DontCall.md)
- * [`Dont\DontCallStatic`](docs/DontCallStatic.md)
- * [`Dont\DontToString`](docs/DontToString.md)
- * [`Dont\JustDont`](docs/JustDont.md)
- * [`Dont\DontInstantiate`](docs/DontInstantiate.md)
+* [`Dont\DontDeserialise`](docs/DontDeserialise.md)
+* [`Dont\DontSerialise`](docs/DontSerialise.md)
+* [`Dont\DontClone`](docs/DontClone.md)
+* [`Dont\DontGet`](docs/DontGet.md)
+* [`Dont\DontSet`](docs/DontSet.md)
+* [`Dont\DontCall`](docs/DontCall.md)
+* [`Dont\DontCallStatic`](docs/DontCallStatic.md)
+* [`Dont\DontToString`](docs/DontToString.md)
+* [`Dont\JustDont`](docs/JustDont.md)
+* [`Dont\DontInstantiate`](docs/DontInstantiate.md)
 
 Usage is straightforward:
 
